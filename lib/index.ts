@@ -1,5 +1,5 @@
 import "./index.css";
-import Button from "./components/button.component";
-import type { ButtonProps } from "./components/button.types";
+import Breadcrumb from "./components/breadcrumb.component";
+import type { BreadcrumbProps } from "./components/breadcrumb.types";
 
-export { Button, ButtonProps };
+export { Breadcrumb, BreadcrumbProps };
