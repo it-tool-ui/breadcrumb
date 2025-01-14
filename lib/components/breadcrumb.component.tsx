@@ -1,6 +1,7 @@
 import React from "react";
 import { breadcrumbVariants, separatorVariants } from "./breadcrumb.helpers";
 import type { BreadcrumbProps } from "./breadcrumb.types";
+import { cn } from "../utils";
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
   items,
@@ -10,6 +11,10 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   itemsBeforeCollapse = 1,
   itemsAfterCollapse = 2,
   size,
+  className,
+  itemClassName,
+  labelClassName,
+  separatorClassName,
   onClick,
 }) => {
   const getItems = () => {
@@ -26,13 +31,16 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   const renderItems = getItems();
 
   return (
-    <div className="flex flex-wrap items-center">
+    <div className={cn("flex flex-wrap items-center", className)}>
       {renderItems.map((item, index) => (
-        <div key={item.value} className="flex items-center">
+        <div
+          key={item.value}
+          className={cn("flex items-center", itemClassName)}
+        >
           <p
             data-last={index === renderItems.length - 1}
             data-disabled={Boolean(disabled)}
-            className={breadcrumbVariants({ size })}
+            className={cn(breadcrumbVariants({ size }), labelClassName)}
             onClick={() => onClick && onClick(item.value)}
           >
             {item.label || "..."}
@@ -40,7 +48,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
           {index !== renderItems.length - 1 && (
             <p
               data-disabled={Boolean(disabled)}
-              className={separatorVariants({ size })}
+              className={cn(separatorVariants({ size }), separatorClassName)}
             >
               {separator === "arrow" ? ">" : "/"}
             </p>

@@ -11,5 +11,9 @@ export interface BreadcrumbProps
   hasCollapse?: boolean;
   itemsBeforeCollapse?: number;
   itemsAfterCollapse?: number;
+  className?: string;
+  itemClassName?: string;
+  labelClassName?: string;
+  separatorClassName?: string;
   onClick?: (val: string | null) => void;
 }
